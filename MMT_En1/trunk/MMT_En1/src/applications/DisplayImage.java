@@ -6,6 +6,12 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+/**
+ * this is an optional programm
+ * last change 20.05.2011
+ * @author muetze
+ *
+ */
 public class DisplayImage {
 
 	/**
