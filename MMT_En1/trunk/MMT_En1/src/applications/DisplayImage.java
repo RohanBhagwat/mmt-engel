@@ -24,10 +24,6 @@ public class DisplayImage {
 		
 		// Image lesen und ausgeben.
 		try {
-			Image img = ImageIO.read(f);
-			Graphics g;
-			
-			g.draw
 		}
 		catch (Exception e) {
 			e.printStackTrace();
