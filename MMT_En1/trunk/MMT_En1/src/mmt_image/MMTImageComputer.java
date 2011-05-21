@@ -39,11 +39,11 @@ public class MMTImageComputer {
 		
 		// get factors
 		int min = getMin(data);
-		int factor = 255 / (getMax(data) - min);
+		double factor = (double)((grayval-1)/ (double)(getMax(data) - min));
 		
 		// contrast stretching
 		for (int i=0; i<imsiz; i++) {
-			newval = (img.getPixel(i) - min) * factor;
+			newval = (int)((img.getPixel(i) - min) * factor);
 			im.setPixel(i, newval);
 		}
 		return im;
