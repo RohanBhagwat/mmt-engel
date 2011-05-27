@@ -30,6 +30,7 @@ public class DisplayImage {
 		
 		// Image lesen und ausgeben.
 		try {
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
