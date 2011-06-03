@@ -16,8 +16,8 @@ public class FileImageReader {
 
 	/**
 	 * opens the file fname and stores the imagedata in Image
-	 * @param fname, String
-	 * @return Image
+	 * @param fname String
+	 * @return MMTImage
 	 * @throws IOException 
 	 */
 	public static MMTImage read(String fname) throws IOException {

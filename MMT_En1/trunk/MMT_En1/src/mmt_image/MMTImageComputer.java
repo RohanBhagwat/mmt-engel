@@ -16,8 +16,8 @@ public class MMTImageComputer {
 	 * creates the histogramm of an MMTImage an returns the data
 	 * as an integer array.
 	 * note: this method only supports images with an max gray value of 255
-	 * @param img, MMTImage
-	 * @return int[]
+	 * @param img MMTImage
+	 * @return int[] the histogramm as an array of Integer
 	 */
 	public static int[] getHistogramm (MMTImage img) {
 		int[] hist = new int[grayval];
