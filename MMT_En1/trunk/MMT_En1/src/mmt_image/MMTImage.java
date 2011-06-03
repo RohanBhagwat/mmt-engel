@@ -102,7 +102,7 @@ public class MMTImage {
 	/**
 	 * change imagedata array
 	 * caution: width and height must also be changed.
-	 * @param data, int[]
+	 * @param data int[]
 	 */
 	public void setData(int[] data) {
 		this.data = data;
@@ -110,17 +110,38 @@ public class MMTImage {
 
 	/**
 	 * sets the name of the image
-	 * @param name, String
+	 * @param name String
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	//TODO 
-	//Getters & Setters for
-	// data
-	// name
-	// width
-	// height
+	/**
+	 * returns the Subimage from xstart, ystart to width and height
+	 * @param xstart int startpoint x
+	 * @param ystart int startpoint y
+	 * @param width int width of subpicture
+	 * @param height int height of subpicture
+	 * @return MMTImage the subpicture
+	 */
+	public MMTImage getSubPicture(int xstart, int ystart, int width, int height) {
+
+		// check Parameter
+		if ((xstart < 0) || (ystart < 0) || (width < 0) || (height < 0)) {
+			throw new IllegalArgumentException("negativ values are not allowed!");
+		}
+		if (((xstart + width) > this.w) || (ystart + height) > this.h) {
+			throw new IllegalArgumentException("Area of subpicture is outside the original image.");
+		}
+
+		MMTImage im = new MMTImage(width, height);
+		
+		for (int x=0; x<width; x++) {
+			for (int y=0; y<height; y++) {
+				im.setPixel(x, y, this.getPixel(x+xstart, y+ystart));
+			}
+		}
+		return im;
+	}
 
 }

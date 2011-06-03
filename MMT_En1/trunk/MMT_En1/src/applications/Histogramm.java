@@ -9,7 +9,7 @@ import mmt_image.MMTImageComputer;
 
 /**
  * generates a textual output of the histogramm of an image
- * @author muetze
+ * @author Mürzl Harald
  *
  */
 public class Histogramm {

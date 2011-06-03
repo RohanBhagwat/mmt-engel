@@ -18,8 +18,8 @@ public class FileImageWriter {
 	 * the type of the imagefile is automatically set by the 
 	 * file extension (*.jpg, *.png,...).
 	 * see doc of javax.imageio.ImageIO for further information.
-	 * @param img, MMTImage image to save
-	 * @param fname, String name of the file
+	 * @param img MMTImage image to save
+	 * @param fname String name of the file
 	 */
 	public static void write(MMTImage img, String fname) {
 		BufferedImage bi = new BufferedImage(img.getWidth(), img.getHeight(), 
