@@ -57,12 +57,19 @@ public class GlobalThreshold {
 		
 		// get normalized histogramm
 		int[] hist = MMTImageComputer.getHistogramm(img);
-		
 		double[] nhist = new double[hist.length];
 		for (int i=0; i<hist.length; i++) {
 			nhist[i] = hist[i] / (img.getWidth()*img.getHeight());
 		}
+		
 		// TODO otsus method einbauen
+		
+		// segment first time
+		MMTImage mask = segmenter(img, 127);
+		double P1 = kumProbability(nhist, 0, 127);
+		double P2 = kumProbability(nhist, 128, 127);
+		
+		return null;
 	}
 
 	private MMTImage segmenter(MMTImage img, int threshold) {
@@ -78,5 +85,13 @@ public class GlobalThreshold {
 		}
 		
 		return nim;
+	}
+	
+	private double kumProbability(double[] nhist, int start, int length) {
+		double P = 0;
+		for (int i=start; i<(start+length); i++) {
+			P += nhist[i];
+		}
+		return P;
 	}
 }

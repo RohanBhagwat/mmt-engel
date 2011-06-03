@@ -36,9 +36,6 @@ public class SobelOperator extends ImageFilter {
 			for (int y=0; y<img.getHeight(); y++) {
 				// calculate new pixel
 				double val = Math.sqrt(Math.pow(xim.getPixel(x, y), 2) + Math.pow(yim.getPixel(x, y), 2));
-				// new value may be outside the valid range
-				val = (val > 255) ? 255 : val;	
-				val = (val < 0) ? 0 : val;
 				nim.setPixel(x, y, (int)val);
 			}
 		}

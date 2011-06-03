@@ -144,4 +144,20 @@ public class MMTImage {
 		return im;
 	}
 
+	public int[] getAbs() {
+		int[] absdata = new int[this.data.length];
+		for(int i=0; i<this.data.length; i++) {
+			absdata[i] = Math.abs(this.data[i]);
+		}
+		return absdata;
+	}
+	
+	public int[] getLimited_0_255() {
+		int[] limdata = new int[this.data.length];
+		for(int i=0; i<this.data.length; i++) {
+			limdata[i] = (this.data[i] < 0) ? 0 : this.data[i];
+			limdata[i] = (this.data[i] > 255) ? 255 : this.data[i];
+		}
+		return limdata;
+	}
 }
