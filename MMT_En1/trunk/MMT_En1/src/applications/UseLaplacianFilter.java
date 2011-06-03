@@ -80,10 +80,13 @@ public class UseLaplacianFilter {
 		try {
 			MMTImage img = FileImageReader.read(im.getAbsolutePath());
 			LaplacianFilter lf = new LaplacianFilter(bh, coef);
-			MMTImage averaged = lf.applyFilter(img);
+			MMTImage laplace = lf.applyFilter(img);
 			
+			// get absvalue to view
+			laplace.setData(laplace.getAbs());
+			laplace.setData(laplace.getLimited_0_255());
 			// save new Picture
-			FileImageWriter.write(averaged, "laplacianImage.png");
+			FileImageWriter.write(laplace, "laplacianImage.png");
 			
 		}
 		catch (IOException e) {

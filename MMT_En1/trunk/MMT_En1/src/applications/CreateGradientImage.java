@@ -52,6 +52,8 @@ public class CreateGradientImage {
 			SobelOperator so = new SobelOperator(bh);
 			MMTImage gradient = so.applyFilter(img);
 			
+			// limit picture to view
+			gradient.setData(gradient.getLimited_0_255());
 			// save new Picture
 			FileImageWriter.write(gradient, "GradientImage.png");
 			

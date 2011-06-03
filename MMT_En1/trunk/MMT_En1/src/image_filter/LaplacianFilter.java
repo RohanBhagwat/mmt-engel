@@ -39,10 +39,6 @@ public class LaplacianFilter extends LinearImageFilter {
 				for (int i=0; i<pixels; i++) {
 					nval += cf.getPixel(i) * sim.getPixel(i);
 				}
-				// new value may be outside the valid range
-				nval = Math.abs(nval);
-				nval = (nval > 255) ? 255 : nval;	
-				nval = (nval < 0) ? 0 : nval;
 				
 				nim.setPixel(x, y, nval);
 			}
