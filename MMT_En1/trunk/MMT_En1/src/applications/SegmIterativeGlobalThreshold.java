@@ -3,7 +3,7 @@ package applications;
 import java.io.File;
 import java.io.IOException;
 
-import segmentation.GlobalThreshold;
+import segmentation.ImageSegmenter;
 
 import mmt_image.FileImageReader;
 import mmt_image.FileImageWriter;
@@ -30,7 +30,7 @@ public class SegmIterativeGlobalThreshold {
 		try {
 			MMTImage img = FileImageReader.read(im.getAbsolutePath());
 			
-			GlobalThreshold gt = new GlobalThreshold();
+			ImageSegmenter gt = new ImageSegmenter();
 			MMTImage thimg = gt.applyIterativeGlobalThreshold(img);
 			
 			FileImageWriter.write(thimg, "GlobThreshold_iterative.png");

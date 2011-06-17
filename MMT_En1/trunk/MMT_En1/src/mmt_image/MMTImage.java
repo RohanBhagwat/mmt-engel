@@ -144,6 +144,11 @@ public class MMTImage {
 		return im;
 	}
 
+	/**
+	 * returns a new array of the absolute values of all pixels.
+	 * the original pixels stay the same
+	 * @return
+	 */
 	public int[] getAbs() {
 		int[] absdata = new int[this.data.length];
 		for(int i=0; i<this.data.length; i++) {
@@ -152,6 +157,14 @@ public class MMTImage {
 		return absdata;
 	}
 	
+	/**
+	 * returns a new array of the pixels.
+	 * the pixels are limited from 0 to 255
+	 * pixels less than 0 are set to zero
+	 * pixels greater than 255 are set to 255
+	 * other pixels stay the same.
+	 * @return
+	 */
 	public int[] getLimited_0_255() {
 		int[] limdata = new int[this.data.length];
 		for(int i=0; i<this.data.length; i++) {
@@ -159,5 +172,41 @@ public class MMTImage {
 			limdata[i] = (this.data[i] > 255) ? 255 : this.data[i];
 		}
 		return limdata;
+	}
+	
+	/**
+	 * sets all pixels to value
+	 * @param value int
+	 */
+	public void setAllPixels(int value) {
+		for (int val : this.data) {
+			val = value;
+		}
+	}
+	
+	/**
+	 * returns the minimum of all pixels
+	 * @return int
+	 */
+	public int getMin() {
+		int min=0;;
+		
+		for (int val : this.data) {
+			min = (min < val) ? min : val;
+		}
+		return min;
+	}
+
+	/**
+	 * returns the maximum of all pixels
+	 * @return int
+	 */
+	public int getMax() {
+		int max=0;
+		
+		for (int val : this.data) {
+			max = (max > val) ? max : val;
+		}
+		return max;
 	}
 }

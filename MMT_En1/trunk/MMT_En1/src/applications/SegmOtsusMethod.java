@@ -9,7 +9,13 @@ import mmt_image.FileImageReader;
 import mmt_image.FileImageWriter;
 import mmt_image.MMTImage;
 
-public class SegmGlobalThreshold {
+/**
+ * commandline program for segmenting an image using otsus method.
+ * syntax: SegmOtsusMethod <inputfile>
+ * @author Mürzl Harald
+ *
+ */
+public class SegmOtsusMethod {
 
 	/**
 	 * @param args
@@ -31,9 +37,9 @@ public class SegmGlobalThreshold {
 			MMTImage img = FileImageReader.read(im.getAbsolutePath());
 			
 			ImageSegmenter gt = new ImageSegmenter();
-			MMTImage thimg = gt.applyGlobalThreshold(img, 125);
+			MMTImage thimg = gt.applyOtsusMethod(img);
 			
-			FileImageWriter.write(thimg, "GlobThreshold.png");
+			FileImageWriter.write(thimg, "GlobThreshold_otsu.png");
 		}
 		catch (IOException e) {
 			e.printStackTrace();
