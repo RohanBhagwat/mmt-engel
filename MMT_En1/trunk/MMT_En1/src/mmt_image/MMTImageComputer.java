@@ -1,7 +1,5 @@
 package mmt_image;
 
-import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * this class provides several functions for MMTImages like
