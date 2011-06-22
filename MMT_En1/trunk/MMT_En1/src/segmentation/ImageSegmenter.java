@@ -10,7 +10,7 @@ import mmt_image.MMTImageComputer;
  * - iterative threshold
  * - otsus method
  * 
- * @author muetze
+ * @author Mürzl Harald
  *
  */
 public class ImageSegmenter {
@@ -19,7 +19,7 @@ public class ImageSegmenter {
 	}
 	
 	/**
-	 * returns an image, which is segmentet by the given threshold.
+	 * returns a segmentation mask in form of a MMTImage using a given threshold.
 	 * @param img MMTImage
 	 * @param threshold int, 0-255 Intensity level (threshold) for segmentation
 	 * @return MMTImage
@@ -28,7 +28,7 @@ public class ImageSegmenter {
 		return segmenter(img, threshold);
 	}
 	/**
-	 * returns an image which is segmented using the method of iterative global threshold
+	 * returns a segmentation mask in form of a MMTImage using iterative global thresholding
 	 * @param img MMTImage
 	 * @return MMTImage
 	 */
@@ -74,14 +74,14 @@ public class ImageSegmenter {
 	}
 
 	/**
-	 * segments an image using the method of otsu.
+	 * returns a segmentation mask in form of a MMTImage using otsu´s method.
 	 * @param img MMTImage
 	 * @return MMTImage
 	 */
 	public MMTImage applyOtsusMethod(MMTImage img) {
 		
 		// get normalized histogramm
-		int[] hist = MMTImageComputer.getHistogramm(img);
+		int[] hist = MMTImageComputer.getHistogram(img);
 		double[] nhist = new double[hist.length];
 		for (int i=0; i<hist.length; i++) {
 			nhist[i] = (double)hist[i] / (img.getWidth()*img.getHeight());
@@ -128,7 +128,13 @@ public class ImageSegmenter {
 		return mask;
 	}
 
+	/**
+	 * returns a segmentation mask in form of a MMTImage using the watershed method.
+	 * @param img MMTImage
+	 * @return MMTImage
+	 */
 	public MMTImage applyWatershedSegmentation(MMTImage img) {
+		// TODO finish the watershed algorithm
 		MMTImage mask = new MMTImage(img.getWidth(), img.getHeight());
 		
 		// get initial parameters

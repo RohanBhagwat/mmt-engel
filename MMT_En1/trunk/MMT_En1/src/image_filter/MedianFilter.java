@@ -6,7 +6,7 @@ import mmt_image.MMTImage;
 
 /**
  * applies a median filter to the given image.
- * borderhandling and filterwidth are to be defined in the constructor.
+ * borderhandling and filter width are to be defined in the constructor.
  * @author Mürzl Harald
  *
  */

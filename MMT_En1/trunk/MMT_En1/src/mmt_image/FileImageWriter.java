@@ -7,17 +7,17 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 /**
- * provides methods for writing an image file
- * @author muetze
+ * provides methods for writing an MMTImage file
+ * @author Mürzl Harald
  *
  */
 public class FileImageWriter {
 
 	/**
-	 * writes the MMTImage to the file specified by fname
-	 * the type of the imagefile is automatically set by the 
-	 * file extension (*.jpg, *.png,...).
-	 * see doc of javax.imageio.ImageIO for further information.
+	 * writes the MMTImage to the file specified by fname. 
+	 * The type of the imagefile is automatically set by the 
+	 * file extension (*.jpg, *.png,...). <br>
+	 * See doc of javax.imageio.ImageIO for further information.<br>
 	 * @param img MMTImage image to save
 	 * @param fname String name of the file
 	 */

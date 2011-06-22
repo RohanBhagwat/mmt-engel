@@ -8,8 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * provides methods for reading an image file
- * @author muetze
+ * provides methods for reading an MMTImage file.
+ * @author Mürzl Harald
  *
  */
 public class FileImageReader {

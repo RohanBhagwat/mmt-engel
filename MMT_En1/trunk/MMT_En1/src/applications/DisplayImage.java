@@ -7,9 +7,9 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 /**
- * this is an optional programm
- * last change 20.05.2011
- * @author muetze
+ * this is an optional programm used to display images. <br>
+ * doesn´t work at the moment (no time).
+ * @author Mürzl Harald
  *
  */
 public class DisplayImage {
@@ -18,7 +18,7 @@ public class DisplayImage {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO getting familiar with ImageObserver and creating code
 		if (args.length < 1) {
 			System.err.println("select a file to display by commandlineargument.");
 		}

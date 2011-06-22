@@ -3,10 +3,10 @@ package image_filter;
 import mmt_image.MMTImage;
 
 /**
- * ImageFilter is an abstract Class to implement an linear or nonlinear filter.
- * The class provides a method to get a subpicture regarding to the filtersize
- * around the position of the picture to be calculated.
- * Borderhandling can be defined.
+ * ImageFilter is an abstract Class to implement a linear or nonlinear filter. 
+ * The class provides a method to get a subpicture depending on the filtersize 
+ * around the position of the pixel to be calculated.
+ * Borderhandling can be defined (see BorderHandling enum).
  * @author Mürzl Harald
  *
  */
@@ -26,8 +26,8 @@ public abstract class ImageFilter {
 	}
 
 	/**
-	 * applyFilter applies the filter on the MMTImage img.
-	 * It returns a new MMTImage.
+	 * applyFilter applies the filter to the MMTImage img. 
+	 * a new image is returned.
 	 * @param img MMTImage
 	 * @return MMTImage
 	 */

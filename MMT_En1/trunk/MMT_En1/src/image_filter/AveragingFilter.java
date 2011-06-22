@@ -22,7 +22,7 @@ public class AveragingFilter extends LinearImageFilter {
 
 	/**
 	 * calculates the average of each pixel in the neighbourhood.
-	 * the width of the coefficient image spcifies the width of this filter.
+	 * the width of the coefficient image specifies the width of this filter.
 	 */
 	public MMTImage applyFilter(MMTImage img) {
 		MMTImage nim = new MMTImage(img.getWidth(), img.getHeight());

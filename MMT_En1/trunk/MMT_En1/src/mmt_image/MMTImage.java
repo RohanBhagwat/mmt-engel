@@ -1,10 +1,10 @@
 package mmt_image;
 
-//TODO import ...
+
 
 /**
  * 
- * This class is used for holding gray scale image data
+ * This class is used for holding gray scale image data.
  */
 public class MMTImage {
 
@@ -23,9 +23,9 @@ public class MMTImage {
 	/**
 	 * creates an image and allocates memory
 	 * 
-	 * @param width
+	 * @param width int
 	 *            width of the image
-	 * @param height 
+	 * @param height int
 	 *			  height of the image 
 	 */
 	public MMTImage(int width, int height) {
@@ -37,9 +37,9 @@ public class MMTImage {
 	/**
 	 * get pixel at specified position, 2D
 	 * 
-	 * @param x
-	 * @param y
-	 * @return pixel at (x,y)
+	 * @param x int
+	 * @param y int
+	 * @return pixel int, pixel at (x,y)
 	 */
 	public int getPixel(int x, int y) {
 		return this.data[x+this.w*y];
@@ -48,8 +48,8 @@ public class MMTImage {
 	/**
 	 * get pixel at specified position, 1D
 	 * 
-	 * @param i
-	 * @return pixel at (i)
+	 * @param i int
+	 * @return pixel int, pixel at (i)
 	 */
 	public int getPixel(int i) {
 		return this.data[i];
@@ -73,9 +73,9 @@ public class MMTImage {
 	/**
 	 * set pixel at position (x,y) to gray value val, 2D
 	 * 
-	 * @param x
-	 * @param y
-	 * @param val
+	 * @param x int
+	 * @param y int
+	 * @param val int
 	 */
 	public void setPixel(int x, int y, int val) {
 		this.data[x+this.w*y] = val;
@@ -84,8 +84,8 @@ public class MMTImage {
 	/**
 	 * set pixel at position (i) to gray value val, 1D
 	 * 
-	 * @param i
-	 * @param val
+	 * @param i int
+	 * @param val int
 	 */
 	public void setPixel(int i, int val) {
 		this.data[i] = val;
@@ -101,7 +101,7 @@ public class MMTImage {
 
 	/**
 	 * change imagedata array
-	 * caution: width and height must also be changed.
+	 * caution: may width and height have to be changed too.
 	 * @param data int[]
 	 */
 	public void setData(int[] data) {
@@ -117,12 +117,13 @@ public class MMTImage {
 	}
 
 	/**
-	 * returns the Subimage from xstart, ystart to width and height
-	 * @param xstart int startpoint x
-	 * @param ystart int startpoint y
-	 * @param width int width of subpicture
-	 * @param height int height of subpicture
-	 * @return MMTImage the subpicture
+	 * Returns a piece of the original image starting at xstart, ystart with width and height in pixel. <br>
+	 * The startpoint is in the left upper corner.
+	 * @param xstart int, startpoint x
+	 * @param ystart int, startpoint y
+	 * @param width int, width of subpicture
+	 * @param height int, height of subpicture
+	 * @return MMTImage, the subpicture
 	 */
 	public MMTImage getSubPicture(int xstart, int ystart, int width, int height) {
 
@@ -147,7 +148,7 @@ public class MMTImage {
 	/**
 	 * returns a new array of the absolute values of all pixels.
 	 * the original pixels stay the same
-	 * @return
+	 * @return int[]
 	 */
 	public int[] getAbs() {
 		int[] absdata = new int[this.data.length];
@@ -158,12 +159,12 @@ public class MMTImage {
 	}
 	
 	/**
-	 * returns a new array of the pixels.
-	 * the pixels are limited from 0 to 255
-	 * pixels less than 0 are set to zero
-	 * pixels greater than 255 are set to 255
+	 * returns a new array of the pixels. 
+	 * the pixels are limited from 0 to 255. <br> 
+	 * pixels less than 0 are set to zero. <br>
+	 * pixels greater than 255 are set to 255 <br>
 	 * other pixels stay the same.
-	 * @return
+	 * @return int[]
 	 */
 	public int[] getLimited_0_255() {
 		int[] limdata = new int[this.data.length];
@@ -175,17 +176,17 @@ public class MMTImage {
 	}
 	
 	/**
-	 * sets all pixels to value
+	 * sets all pixels to the give value.
 	 * @param value int
 	 */
 	public void setAllPixels(int value) {
-		for (int val : this.data) {
+		for (@SuppressWarnings("unused") int val : this.data) {
 			val = value;
 		}
 	}
 	
 	/**
-	 * returns the minimum of all pixels
+	 * returns the smallest value of all pixels.
 	 * @return int
 	 */
 	public int getMin() {
@@ -198,7 +199,7 @@ public class MMTImage {
 	}
 
 	/**
-	 * returns the maximum of all pixels
+	 * returns the maximum value of all pixels
 	 * @return int
 	 */
 	public int getMax() {
