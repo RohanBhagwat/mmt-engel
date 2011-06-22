@@ -3,10 +3,8 @@ package image_filter;
 import mmt_image.MMTImage;
 
 /**
- * applies an laplacian filter.
- * therefore the sum of the coefficients has to be 0!
- * after applying the filter, the absolut values are used for the resulting image.
- * the values are also limited from 0 to 255.
+ * applies a laplacian filter to an image.
+ * borderhandling and filter width are to be defined in the constructor.
  * @author muetze
  *
  */

@@ -1,14 +1,13 @@
 package image_filter;
 
 /**
- * lists the methods for handling the borders of the images, when filters are applied.
+ * lists the methods for handling the borders of the images, when filters are applied.<br><br>
  * 
- * LIMITING...the border of the image is cut off, so the new image is smaller.
- * PARTIAL....only the part of the image which overlaps with the coefficients is processed.
- * PADDING....the pixels outside the image are set to 0 before the filter is applied.
+ * LIMITING...the border of the image is cut off, so the new image is smaller.<br>
+ * PARTIAL....only the part of the image which overlaps with the coefficients is processed by the filter. <br>
+ * PADDING....the pixels outside the image are set to 0 before the filter is applied. <br><br>
  * 
- * CAUTION: when LIMITING is set as BorderHandling, then the filterclass has to cut off the border.
- *          internally LIMITING is treated as PARTIAL.
+ * CAUTION: when LIMITING is set as BorderHandling, then the filter class cuts off the border --> image gets smaller!
  * @author Mürzl Harald
  *
  */

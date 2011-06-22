@@ -11,12 +11,12 @@ import mmt_image.FileImageWriter;
 import mmt_image.MMTImage;
 
 /**
- * commandline programm for applying an median filter to an image.
+ * command line program for applying an median filter to an image.
  * 
- * usage: UseMedianFilter <image> <BorderHandling>
- * BorderHandling can be partial, padding or limiting. partial is the defaultvalue.
+ * usage: UseMedianFilter [image] [outputfile] [BorderHandling] <br>
+ * BorderHandling can be partial, padding or limiting. partial is the default value. <br>
+ * for detailed information please see documentation of BorderHandling enumeration.
  * 
- * outputfile is medianImage.png
  * @author Mürzl Harald
  *
  */
@@ -27,22 +27,24 @@ public class UseMedianFilter {
 	 */
 	public static void main(String[] args) {
 
-		if (args.length < 1) {
-			System.err.println("set the image for applying an median filter.");
+		if (args.length < 2) {
+			System.err.println("set the image for applying an median filter and the outputfile.");
+			return;
 		}
 		File im = new File(args[0]);
 		BorderHandling bh = BorderHandling.PARTIAL;
 		
 		// check if borderhandling is given
-		if (args.length == 2) {
-			if (args[1].equals("partial") || args[1].equals("padding") || args[1].equals("limiting")) {
-				bh = BorderHandling.valueOf(args[1].toUpperCase());
+		if (args.length == 3) {
+			if (args[2].equals("partial") || args[2].equals("padding") || args[2].equals("limiting")) {
+				bh = BorderHandling.valueOf(args[2].toUpperCase());
 			}
 		}
 		
 		// check directory
 		if (!im.isFile() || !im.exists()) {
 			System.err.println(im.getName() + " --> invalid file.");
+			return;
 		}
 
 		// create filter mask
@@ -55,7 +57,7 @@ public class UseMedianFilter {
 			MMTImage averaged = mf.applyFilter(img);
 			
 			// save new Picture
-			FileImageWriter.write(averaged, "medianImage.png");
+			FileImageWriter.write(averaged, args[1]);
 			
 		}
 		catch (IOException e) {

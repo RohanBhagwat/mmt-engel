@@ -2,22 +2,22 @@ package mmt_image;
 
 
 /**
- * this class provides several functions for MMTImages like
+ * this class provides several static methods for MMTImages like
  * getHistogram(), contrastStrecher(), gammaCorrection(),...
- * @author muetze
+ * @author Mürzl Harald
  *
  */
 public class MMTImageComputer {
 	private static int grayval = 256;
 
 	/**
-	 * creates the histogramm of an MMTImage an returns the data
-	 * as an integer array.
-	 * note: this method only supports images with an max gray value of 255
+	 * creates the histogram of an MMTImage and returns the data as an integer array. <br>
+	 * index 0 shows the nr of pixels with value 0, index 2.... , up to 255 <br>
+	 * note: this method only supports images with an max gray value of 255. <br>
 	 * @param img MMTImage
-	 * @return int[] the histogramm as an array of Integer
+	 * @return int[] the histogram as an array of Integer.
 	 */
-	public static int[] getHistogramm (MMTImage img) {
+	public static int[] getHistogram (MMTImage img) {
 		int[] hist = new int[grayval];
 		int[] data = img.getData();
 		int imsiz = img.getWidth() * img.getHeight();
@@ -29,6 +29,11 @@ public class MMTImageComputer {
 		return hist;
 	}
 
+	/**
+	 * returns an image with the content of img stretched from 0 to 255.
+	 * @param img MMTImage, the image to stretch.
+	 * @return MMTImage
+	 */
 	public static MMTImage contrastStretcher (MMTImage img) {
 		MMTImage im = new MMTImage(img.getWidth(), img.getHeight());
 		int[] data = img.getData();
@@ -47,12 +52,18 @@ public class MMTImageComputer {
 		return im;
 	}
 	
+	/**
+	 * returns the gamma corrected image of img. pixels greater than 255 will be limited to 255; <br>
+	 * @param img MMTImage
+	 * @param gamma double
+	 * @return MMTImage
+	 */
 	public static MMTImage gammaCorrection (MMTImage img, double gamma) {
 		MMTImage im = new MMTImage(img.getWidth(), img.getHeight());
 		int imsiz = img.getWidth() * img.getHeight();
 		int newval;
 		
-		// contrast stretching
+		// gamma correction
 		for (int i=0; i<imsiz; i++) {
 			newval = (int)(Math.pow((double)img.getPixel(i), gamma));
 			newval = (newval > 255) ? 255 : newval;

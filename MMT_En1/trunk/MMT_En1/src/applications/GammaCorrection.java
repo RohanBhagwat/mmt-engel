@@ -8,6 +8,14 @@ import mmt_image.FileImageWriter;
 import mmt_image.MMTImage;
 import mmt_image.MMTImageComputer;
 
+/**
+ * the GammaCorrection is used if an image is under or overexposed. it improves the local contrast of an image. <br>
+ * gamma is a floating point value. if 1.0 is used the image stays the same. <br>
+ * usage: GammaCorrection [imagepath] [outputfile] [gamma] <br>
+ * the output image is saved to the path specified by outputfile.
+ * @author Mürzl Harald
+ *
+ */
 public class GammaCorrection {
 
 	/**
@@ -17,12 +25,14 @@ public class GammaCorrection {
 		if (args.length < 3) {
 			System.err.println("set the image for gamma correction, the name of the outputfile and gamma.");
 			System.err.println("GammaCorrection <inputfile> <outputfile> <gamma>");
+			return;
 		}
 		File im = new File(args[0]);
 		
 		// check file
 		if (!im.isFile() || !im.exists()) {
 			System.err.println(im.getName() + " --> invalid file.");
+			return;
 		}
 
 		// open picture, correct gamma and output it

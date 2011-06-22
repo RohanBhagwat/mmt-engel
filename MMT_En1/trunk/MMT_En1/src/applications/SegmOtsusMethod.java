@@ -10,8 +10,12 @@ import mmt_image.FileImageWriter;
 import mmt_image.MMTImage;
 
 /**
- * commandline program for segmenting an image using otsus method.
- * syntax: SegmOtsusMethod <inputfile>
+ * command line program for creating a segmentation mask using otsus method. <br>
+ * 
+ * usage: SegmOtsusMethod [image] [outputfile]<br><br>
+ * image............the image to be transformed.<br>
+ * outputfile.......specifies the location to save the transformed image.<br>
+ * 
  * @author Mürzl Harald
  *
  */
@@ -22,14 +26,16 @@ public class SegmOtsusMethod {
 	 */
 	public static void main(String[] args) {
 	
-		if (args.length < 1) {
-			System.err.println("set the image for applying Global Threshold segmentation.");
+		if (args.length < 2) {
+			System.err.println("set the image for applying otsus method.");
+			return;
 		}
 		File im = new File(args[0]);
 		
 		// check directory
 		if (!im.isFile() || !im.exists()) {
 			System.err.println(im.getName() + " --> invalid file.");
+			return;
 		}
 
 		// open picture and apply glob threshold
@@ -39,7 +45,7 @@ public class SegmOtsusMethod {
 			ImageSegmenter gt = new ImageSegmenter();
 			MMTImage thimg = gt.applyOtsusMethod(img);
 			
-			FileImageWriter.write(thimg, "GlobThreshold_otsu.png");
+			FileImageWriter.write(thimg, args[1]);
 		}
 		catch (IOException e) {
 			e.printStackTrace();

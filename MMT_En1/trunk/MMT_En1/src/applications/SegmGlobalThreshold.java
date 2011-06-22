@@ -9,6 +9,16 @@ import mmt_image.FileImageReader;
 import mmt_image.FileImageWriter;
 import mmt_image.MMTImage;
 
+/**
+ * command line program for creating a segmentation mask using global thresholding. <br>
+ * 
+ * usage: SegmGlobalThreshold [image] [outputfile]<br><br>
+ * image............the image to be transformed.<br>
+ * outputfile.......specifies the location to save the transformed image.<br>
+ * 
+ * @author Mürzl Harald
+ *
+ */
 public class SegmGlobalThreshold {
 
 	/**
@@ -16,14 +26,16 @@ public class SegmGlobalThreshold {
 	 */
 	public static void main(String[] args) {
 	
-		if (args.length < 1) {
+		if (args.length < 2) {
 			System.err.println("set the image for applying Global Threshold segmentation.");
+			return;
 		}
 		File im = new File(args[0]);
 		
 		// check directory
 		if (!im.isFile() || !im.exists()) {
 			System.err.println(im.getName() + " --> invalid file.");
+			return;
 		}
 
 		// open picture and apply glob threshold
@@ -33,7 +45,7 @@ public class SegmGlobalThreshold {
 			ImageSegmenter gt = new ImageSegmenter();
 			MMTImage thimg = gt.applyGlobalThreshold(img, 125);
 			
-			FileImageWriter.write(thimg, "GlobThreshold.png");
+			FileImageWriter.write(thimg, args[1]);
 		}
 		catch (IOException e) {
 			e.printStackTrace();

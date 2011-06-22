@@ -3,9 +3,9 @@ package image_filter;
 import mmt_image.MMTImage;
 
 /**
- * applies the sobel operator on an image.
+ * applies the sobel operator to an image. 
  * internally two laplacian filters with the sobel operators 
- * for vertical and horizontal filtering a used.
+ * for vertical and horizontal filtering are used.
  * @author Mürzl Harald
  *
  */

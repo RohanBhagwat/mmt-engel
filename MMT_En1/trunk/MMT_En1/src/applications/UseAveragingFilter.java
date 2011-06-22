@@ -11,26 +11,27 @@ import mmt_image.FileImageWriter;
 import mmt_image.MMTImage;
 
 /**
- * commandline programm for applying an averaging filter on an image.
- * filter coefficients are all 1.
- * outputfile is averagedImage.png
- * usage: UseAveragingFilter <imagepath>
- * @author muetze
+ * command line program for applying an averaging filter to an image. <br>
+ * usage: UseAveragingFilter [imagepath] [outputfile]<br><br>
+ * image............the image to be transformed.<br>
+ * outputfile.......specifies the location to save the transformed image.<br>
+ * @author Mürzl Harald
  *
  */
 public class UseAveragingFilter {
 
 	public static void main(String[] args) {
-		// TODO add code to read the filtercoefficieants from a file.
 		
-		if (args.length < 1) {
-			System.err.println("set the image for applying an averaging filter.");
+		if (args.length < 2) {
+			System.err.println("set the image for applying an averaging filter and the outputfile.");
+			return;
 		}
 		File im = new File(args[0]);
 		
 		// check directory
 		if (!im.isFile() || !im.exists()) {
 			System.err.println(im.getName() + " --> invalid file.");
+			return;
 		}
 
 		// create filter mask
@@ -50,7 +51,7 @@ public class UseAveragingFilter {
 			MMTImage averaged = af.applyFilter(img);
 			
 			// save new Picture
-			FileImageWriter.write(averaged, "averagedImage.png");
+			FileImageWriter.write(averaged, args[1]);
 			
 		}
 		catch (IOException e) {
