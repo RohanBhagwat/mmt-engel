@@ -30,6 +30,37 @@ public class MMTImageComputer {
 	}
 
 	/**
+	 * gets the histogram of the image and calculates the normalized histogram. <br>
+	 * @param img MMTImage
+	 * @return double[]
+	 */
+	public static double[] getNormHistogram (MMTImage img) {
+		int[] hist = getHistogram(img);
+		double[] nhist = new double[hist.length];
+		
+		for (int i=0; i<hist.length; i++) {
+			nhist[i] = (double)((double)hist[i] / (img.getHeight()*img.getWidth()));
+		}
+		return nhist;
+	}
+	
+	/**
+	 * calculates the kumulated normalized histogram of the image.
+	 * @param img MMTImage
+	 * @return double[]
+	 */
+	public static double[] getKumNormHistogram (MMTImage img) {
+		double[] nhist = getNormHistogram(img);
+		double[] knhist = new double[nhist.length];
+		
+		knhist[0] = nhist[0];
+		for (int i=1; i<nhist.length; i++) {
+			knhist[i] = nhist[i] + knhist[i-1];
+		}
+		
+		return knhist;
+	}
+	/**
 	 * returns an image with the content of img stretched from 0 to 255.
 	 * @param img MMTImage, the image to stretch.
 	 * @return MMTImage
