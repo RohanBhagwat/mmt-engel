@@ -80,32 +80,31 @@ public class ImageSegmenter {
 	 */
 	public MMTImage applyOtsusMethod(MMTImage img) {
 		
-		// get normalized histogramm
-		int[] hist = MMTImageComputer.getHistogram(img);
-		double[] nhist = new double[hist.length];
-		for (int i=0; i<hist.length; i++) {
-			nhist[i] = (double)hist[i] / (img.getWidth()*img.getHeight());
-		}
-		
+		// get normalized and kumulated normalized histogramm
+		double[] nhist = MMTImageComputer.getNormHistogram(img);
+		double[] knhist = MMTImageComputer.getKumNormHistogram(img);
 		double P1, P2, varianz, varianz_max;
 		double mg, m1, m2;
 		int kmax = 0;
 		
+		// calculate mg
+		mg=0;
+		for (int i=0; i<255; i++) {
+			mg += nhist[i] * i;
+		}		
 		varianz_max = 0;
 		// find max var(k) 
 		for (int k=0; k<255; k++) {
 			
 			// calculate Probability if a pixel is in segment 1 or 2
-			P1 = kumProbability(nhist, 0, k);
+			P1 = knhist[k];
 			P2 = 1-P1;
 
 			// calculate global mean gray value and 
 			// mean gray value of segment 1 and 2 using nhist
-			mg = 0;
 			m1 = 0;
 			m2 = 0;
 			for (int i=0; i<255; i++) {
-				mg += nhist[i] * i;
 				if (i<=k) {
 					m1 += nhist[i] * i;
 				}

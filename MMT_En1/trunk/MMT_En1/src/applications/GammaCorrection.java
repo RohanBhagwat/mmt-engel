@@ -29,6 +29,8 @@ public class GammaCorrection {
 		}
 		File im = new File(args[0]);
 		
+		double gamma = Double.valueOf(args[2]);
+		
 		// check file
 		if (!im.isFile() || !im.exists()) {
 			System.err.println(im.getName() + " --> invalid file.");
@@ -38,7 +40,7 @@ public class GammaCorrection {
 		// open picture, correct gamma and output it
 		try {
 			MMTImage img = FileImageReader.read(im.getAbsolutePath());
-			MMTImage nimg = MMTImageComputer.gammaCorrection(img, Double.valueOf(args[2]));
+			MMTImage nimg = MMTImageComputer.gammaCorrection(img, gamma);
 			FileImageWriter.write(nimg, args[1]);
 			
 		}

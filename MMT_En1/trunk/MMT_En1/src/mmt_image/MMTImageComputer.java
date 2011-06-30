@@ -91,12 +91,14 @@ public class MMTImageComputer {
 	 */
 	public static MMTImage gammaCorrection (MMTImage img, double gamma) {
 		MMTImage im = new MMTImage(img.getWidth(), img.getHeight());
+		int wmin = img.getMin();
+		int wmax = img.getMax();
 		int imsiz = img.getWidth() * img.getHeight();
 		int newval;
 		
 		// gamma correction
 		for (int i=0; i<imsiz; i++) {
-			newval = (int)(Math.pow((double)img.getPixel(i), gamma));
+			newval = (int)(wmin+wmax*Math.pow(((double)img.getPixel(i)-wmin)/(wmax-wmin), gamma));
 			newval = (newval > 255) ? 255 : newval;
 			im.setPixel(i, newval);
 		}
