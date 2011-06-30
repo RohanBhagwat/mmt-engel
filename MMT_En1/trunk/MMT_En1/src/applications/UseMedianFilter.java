@@ -13,7 +13,7 @@ import mmt_image.MMTImage;
 /**
  * command line program for applying an median filter to an image.
  * 
- * usage: UseMedianFilter [image] [outputfile] [BorderHandling] <br>
+ * usage: UseMedianFilter [image] [outputfile] [BorderHandling] [filtersize] <br>
  * BorderHandling can be partial, padding or limiting. partial is the default value. <br>
  * for detailed information please see documentation of BorderHandling enumeration.
  * 
@@ -48,7 +48,7 @@ public class UseMedianFilter {
 		}
 
 		// create filter mask
-		int width = 3;
+		int width = (args.length == 3) ? Integer.parseInt(args[2]) : 3;
 
 		// open picture and use median filter
 		try {

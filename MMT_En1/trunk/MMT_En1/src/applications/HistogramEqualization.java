@@ -34,7 +34,7 @@ public class HistogramEqualization {
 			return;
 		}
 
-		// open picture and print histogramm
+		// open picture and print histogram equalized one
 		try {
 			MMTImage img = FileImageReader.read(im.getAbsolutePath());
 			MMTImage eqimg = new MMTImage(img.getWidth(), img.getHeight());
